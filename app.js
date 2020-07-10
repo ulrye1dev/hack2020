@@ -2,6 +2,7 @@ var port = process.env.PORT || 3000,
     http = require('http'),
     fs = require('fs');
 
+
 var app = http.createServer(function (req, res) {
   if (req.url.indexOf('/img') != -1) {
     var filePath = req.url.split('/img')[1];
@@ -56,5 +57,13 @@ var app = http.createServer(function (req, res) {
     });
   }
 }).listen(port, '0.0.0.0');
+
+// Ensure that S3 Bucket is properly loaded
+console.log('S3 BUCKET', process.env.AWS_S3_BUCKET)
+
+// Routes
+app.use('/', [
+  require('./routes/fileupload')
+])
 
 module.exports = app;
