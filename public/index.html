@@ -28,6 +28,14 @@
                 <h2>You just created a Node.js web application</h2>
             </div>
         </div>
+      <form ref='uploadForm' 
+      id='uploadForm' 
+      action='http://localhost:7000/upload' 
+      method='post' 
+      encType="multipart/form-data">
+      <input type="file" name="inputFile" multiple />
+      <input type='submit' value='Upload!' />
+      </form>     
     </div>
 
     <footer>
